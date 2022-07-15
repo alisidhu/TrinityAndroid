@@ -1,15 +1,12 @@
 package com.ali.trinity.ui.contactslist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import com.ali.trinity.R
 import com.ali.trinity.databinding.ActivityMainBinding
 import com.ali.trinity.ui.interfaces.OnItemClickListener
 import com.ali.trinity.ui.models.ContactsData
-import com.ali.trinity.ui.models.ContactsModel
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -30,12 +27,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setupRecylerView(){
+    private fun setupRecyclerView(){
         viewModel.contactsAdapter.onItemClickListener = rvItemClickListener
 
     }
     private fun loadContactsObserver(){
-        setupRecylerView()
+        setupRecyclerView()
         viewModel.loadContacts(this)
         viewModel.getContactsList().observe(this, Observer { contacts ->
             contacts?.let {
