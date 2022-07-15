@@ -13,8 +13,7 @@ import java.io.IOException
 
 class MainViewModel : ViewModel() {
     var contactsList: MutableLiveData<List<ContactsModel>?> = MutableLiveData()
-    var contactsAdapter: ContactsAdapter =
-        ContactsAdapter(mutableListOf())
+    var contactsAdapter: ContactsAdapter = ContactsAdapter(mutableListOf())
     @JvmName("getContactsList1")
     fun getContactsList(): MutableLiveData<List<ContactsModel>?> {
 
@@ -28,6 +27,7 @@ class MainViewModel : ViewModel() {
             val contacts: String = Utils.loadJSONFromAsset(context, "data.json")
             var  contactData:ContactsData = gson.fromJson(contacts, ContactsData::class.java)
             contactsList.postValue(contactData.contactsData)
+
         } catch (e: IOException) {
             e.printStackTrace()
         }
